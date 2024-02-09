@@ -1,0 +1,52 @@
+ private void Bsave_Click(object sender, EventArgs e)
+ {
+       SqlConnection conn = new SqlConnection();
+       conn.ConnectionString = "Data Source=ABDULLAH-NADER\\SQLEXPRESS;Initial Catalog=DBpharmacy;Integrated Security=True";
+     
+     conn.Open();
+     SqlCommand cmd = new SqlCommand();
+     cmd.Connection = conn;
+     cmd.CommandText = "insert into StoringDrugs(sDgNum,sDgName,sDgCategory,sDgSum,sDgUsage) values ('"+txtBoxSDgNum.Text+"','"+txtBoxSDgName.Text+"','"+txtBoxSDgCategory.Text+"','"+txtBoxSDgSum.Text+"','"+txtBoxSDgUsage.Text+"')";
+     cmd.ExecuteNonQuery();
+
+     conn.Close();
+
+     MessageBox.Show("تم الإضافة بنجاح","الإضافة",MessageBoxButtons.OK,MessageBoxIcon.Information);
+ }
+
+
+_________________________________________
+
+
+  private void Bdelete_Click(object sender, EventArgs e)
+  {
+      SqlConnection conn = new SqlConnection();
+      conn.ConnectionString = "Data Source=ABDULLAH-NADER\\SQLEXPRESS;Initial Catalog=DBpharmacy;Integrated Security=True";
+
+      conn.Open();
+      SqlCommand cmd = new SqlCommand();
+      cmd.Connection = conn;
+      cmd.CommandText = "delete from StoringDrugs where sDgNum ='"+txtBoxSDgNum.Text+"'";
+      cmd.ExecuteNonQuery();
+
+      conn.Close();
+
+      MessageBox.Show("تم الحذف بنجاح", "الحذف", MessageBoxButtons.OK, MessageBoxIcon.Information);
+  }
+
+  private void Bupdate_Click(object sender, EventArgs e)
+  {
+      SqlConnection conn = new SqlConnection();
+      conn.ConnectionString = "Data Source=ABDULLAH-NADER\\SQLEXPRESS;Initial Catalog=DBpharmacy;Integrated Security=True";
+
+      conn.Open();
+      SqlCommand cmd = new SqlCommand();
+      cmd.Connection = conn;
+      cmd.CommandText = "update StoringDrugs set sDgCategory ='"+txtBoxSDgCategory.Text+"' where sDgNum ='" + txtBoxSDgNum.Text + "'";
+      cmd.ExecuteNonQuery();
+
+      conn.Close();
+
+      MessageBox.Show("تم التعديل بنجاح", "التعديل", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+  }
